@@ -5,7 +5,7 @@ import datetime
 import pandas as pd
 
 # csv file name
-input_filename = '//vti.se/root/Mistrainfra/Data/Trafikdata/Trafikdata 2015/VTI_20150101_20151231_TrafikJVG.csv'
+input_filename = 'c:/Users/AbdouAA/Downloads/VTI_20150101_20151231_TrafikJVG.csv'
 output_filename = '//vti.se/root/Mistrainfra/Data/Trafikdata/Trafikdata 2015/Export_RST_2015.csv'
 
 # small sample (for testing)

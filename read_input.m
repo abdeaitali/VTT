@@ -52,7 +52,8 @@ for from=1:size(line,1)
         row_idx = find(ismember(T_alt_travel_time{:,1},station_from));
         % Extract the distance and calculate the alternative travel time
         % (2nd best), assuming 50 km/h for replacement buses
-        alt_travel_time(from,to) = T_alt_travel_time{row_idx,station_to}/1000/50*60; % in minutes
+        speed = 50;
+        alt_travel_time(from,to) = T_alt_travel_time{row_idx,station_to}/1000/speed*60; % in minutes
         % in case of alternative is faster, assume it is 25% longer than
         % best route
         if(alt_travel_time(from,to)<=travel_time(from,to))
@@ -61,11 +62,25 @@ for from=1:size(line,1)
     end
 end
 
-%% read the average delay and disruption probabiliy data
-% temporarily set as 30 seconds delay in average
-avg_delay = 30*ones(size(line,1))/60; % in minutes
-% temporarily set to .5
-delay_prob = .5*ones(size(line,1));
+%% read the average delay and disruption probabiliy data (FROM LUPP 2015)
+% average delays in minutes
+T_delay = readtable(filename, 'Sheet','Delay','Range', 'A1:C28','VariableNamingRule', 'preserve');
+avg_delay = zeros(size(line,1)); % in minutes
+delay_prob = zeros(size(line,1));
+for from=1:size(line,1)
+    for to=1:size(line,1)
+        if(from==to)
+           continue; 
+        end
+        delay_prob(from,to) = T_delay{from,3};
+        if(from<to) % dir Bålsta -> Nyh
+            avg_delay(from,to) = sum(T_delay{from:to-1,2});
+        else % % dir Bålsta <- Nyh
+            avg_delay(from,to) = sum(T_delay{to+1:from,2});
+        end
+    end
+end
+
 
 %% read OD passenger data
 T_pax = readtable(filename, 'Sheet','OD_pax','Range', 'A1:AZ52','VariableNamingRule', 'preserve');
