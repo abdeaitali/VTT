@@ -6,7 +6,7 @@ output_file = '//vti.se/root/Mistrainfra/Data/Trafikdata/filter_traffic_data_pen
 
 # Define the list of valid platssignatur values
 valid_platssignatur = ["Bål", "Bro", "Kän", "Khä", "Jkb", "Bkb", "Spå", "Sub", "Ke", "Cst", "Sst", "Åbe", "Äs", "Fas", \
-                       "Tåd", "Skg", "Hnd", "Jbo", "Vhn", "Kda", "Ts", "Hfa", "Ssä", "Öso", "Ngd", "Gdv", "Nyh"]
+                       "Tåd", "Skg", "Hnd", "Jbo", "Vhe", "Kda", "Ts", "Hfa", "Ssä", "Öso", "Ngd", "Gdv", "Nyh"]
 
 # create the list of stretches
 stretches = []
