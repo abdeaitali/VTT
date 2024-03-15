@@ -2,11 +2,21 @@ import csv
 
 # Set input and output file names
 input_file = '//vti.se/root/Mistrainfra/Data/Trafikdata/Trafikdata 2015/Export_RST_2015.csv'
-output_file = '//vti.se/root/Mistrainfra/Data/Trafikdata/filter_traffic_data_pendeltag_Bal_Nyh_2015.csv'
+#output_file = 'C:/Users/AbdouAA/Work Folders/Documents/GitHub/VTT/1_scenario/arkiv/pendeltåg 2015/filter_traffic_data_pendeltag_Bal_Nyh_2015.csv'
+output_file = 'C:/Users/AbdouAA/Work Folders/Documents/GitHub/VTT/1_scenario/arkiv/pendeltåg 2015/filter_traffic_data_pendeltag_2015.csv'
 
 # Define the list of valid platssignatur values
-valid_platssignatur = ["Bål", "Bro", "Kän", "Khä", "Jkb", "Bkb", "Spå", "Sub", "Ke", "Cst", "Sst", "Åbe", "Äs", "Fas", \
-                       "Tåd", "Skg", "Hnd", "Jbo", "Vhe", "Kda", "Ts", "Hfa", "Ssä", "Öso", "Ngd", "Gdv", "Nyh"]
+# only Nyh-Bål
+#valid_platssignatur = ["Bål", "Bro", "Kän", "Khä", "Jkb", "Bkb", "Spå", "Sub", "Ke", "Cst", "Sst", "Åbe", "Äs", "Fas", \
+#                       "Tåd", "Skg", "Hnd", "Jbo", "Vhe", "Kda", "Ts", "Hfa", "Ssä", "Öso", "Ngd", "Gdv", "Nyh"]
+# all network
+valid_platssignatur = [
+    "Bkb", "Bro", "Bål", "Fas", "Flb", "Gn", "Gdv", "Hnd", "Hel", "Hfa", "Hu", "Hgv", "Jkb",\
+    "Jbo", "Khä", "Ke", "Kn", "Kda", "Kän", "Mr", "Mö", "Nvk", "Ngd", "Nyh", "Rs", "R", "Rön",\
+    "Ssä", "Skg", "Sol", "So", "Spå", "Cst", "Sst", "Sta", "Sub", "Söc", "Söd", "Söu", "Tåd", "Tul",\
+    "Tu", "Ts", "Udl", "Upv", "U", "Vhe", "Åbe", "Äs", "Öso", "Öte"]
+
+
 
 # create the list of stretches
 stretches = []
@@ -34,5 +44,5 @@ with open(input_file, "r", encoding="utf-8") as csv_file, open(output_file, "w",
         # check if it is a commuter train on the line Bålsta Nynäshamn (or first and last station in the line)
         if row[8].lower() in valid_platssignatur_lower and row[10].lower() in valid_platssignatur_lower:
             # check if arrival time exist
-            if row[20] != 'Saknas     -    ':
-                writer.writerow(row)
+#            if row[20] != 'Saknas     -    ':
+            writer.writerow(row)
