@@ -15,7 +15,7 @@ LOG = logging.getLogger(__name__)
 #######################
 
 # inits for plotting and exporting
-plot_ind = False
+plot_ind = True
 export_ind = False
 head_ind = False
 
